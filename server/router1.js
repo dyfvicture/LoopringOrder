@@ -27,7 +27,7 @@ router.post('/order', async (ctx, next) => {
     }
     // data should be a buffer
     const data = Buffer.from(order)
-    ipfs.pubsub.publish('topic-name-here', data, (err) => {
+    ipfs.pubsub.publish(config.ipfsPubSubTopic(), data, (err) => {
         if (err) {
             console.error('error publishing: ', err)
         } else {
